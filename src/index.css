@@ -22,9 +22,9 @@ Header {
   text-indent: 0.4em;
   padding-block-start: 0.3em;
   padding-block-end: 0.3em;
-  box-shadow: 0 3px 5px var(--primary-text-colour);
-  -moz-box-shadow: 0 3px 5px var(--primary-text-colour);
-  -webkit-box-shadow: 0 3px 5px var(--primary-text-colour);
+  box-shadow: 0 3px 5px rgba(53, 55, 68, 0.25);
+  -moz-box-shadow: 0 3px 5px rgba(53, 55, 68, 0.25);
+  -webkit-box-shadow: 0 3px 5px rgba(53, 55, 68, 0.25);
 }
 
 #header-bar {
