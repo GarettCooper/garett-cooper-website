@@ -1,10 +1,50 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+:root {
+  font-family: 'Lato', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: var(--primary-text-colour);
+  background-color: var(--background-colour);
+
+  /* Variables */
+  --primary-text-colour:  rgb(53, 55, 68);
+  --seconday-colour: rgb(0, 171, 68);
+  --background-colour: rgb(255, 255, 255);
+}
+
+body {
+  margin: 0;
+}
+
+Header {
+  text-align: left;
+  align-content: center;
+  font-size: xx-large;
+  text-indent: 0.4em;
+  padding-block-start: 0.3em;
+  padding-block-end: 0.3em;
+  box-shadow: 0 3px 5px var(--primary-text-colour);
+  -moz-box-shadow: 0 3px 5px var(--primary-text-colour);
+  -webkit-box-shadow: 0 3px 5px var(--primary-text-colour);
+}
+
+#header-bar {
+  width: 100%;
+  height: 0.1em;
+  padding-bottom: 0.2em;
+  background:var(--seconday-colour);
+  margin: auto;
+  margin-bottom: 0.3em;
+}
+
+.logo {
+  padding-left: 0.2em;
+  height: 1em;
+  float: right;
+}
+
+.margin {
+  width: 90%;
+  margin: auto;
 }
 
 code {

@@ -1,14 +1,16 @@
 import React from 'react';
+import Header from './Header';
 import logo from './logo.svg';
 import './App.css';
 
 const App: React.FC = () => {
   return (
     <div className="App">
+      <Header/>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.tsx</code> and save to reload.
+          Change test.
         </p>
         <a
           className="App-link"
