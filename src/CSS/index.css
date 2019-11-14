@@ -11,8 +11,17 @@
   --background-colour: rgb(255, 255, 255);
 }
 
-body {
+html, body, #root, .App {
   margin: 0;
+  height: 100%;
+}
+
+._loading_overlay_overlay {
+  background: white !important;
+}
+
+._loading_overlay_wrapper {
+  min-height: 100%;
 }
 
 .headroom-wrapper {

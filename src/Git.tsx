@@ -25,13 +25,18 @@ export class GitCard extends React.Component<GitCardProps, {}> {
     }
 }
 
+interface GitPanelProps {
+    loadingCallback?: (arg0: boolean) => void;
+}
 
 interface GitPanelState {
     //TODO: setup an actual type for the api response
     gitRepos: [any]
 }
 
-export default class GitPanel extends  React.Component<{}, GitPanelState>{
+
+
+export default class GitPanel extends  React.Component<GitPanelProps, GitPanelState>{
 
     constructor (props: {}) {
         super(props);
@@ -46,6 +51,9 @@ export default class GitPanel extends  React.Component<{}, GitPanelState>{
             this.setState({gitRepos: await response.json()});
             console.log(this.state.gitRepos[0]);
             this.state.gitRepos.map(repo => console.log("Unique Key: " + repo.id));
+            
+            if (this.props.loadingCallback !== undefined) this.props.loadingCallback(false);
+
         } catch (error) {
             console.log(error);
             this.setState({gitRepos: [{
