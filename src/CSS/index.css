@@ -15,16 +15,17 @@ body {
   margin: 0;
 }
 
+.headroom-wrapper {
+  margin-bottom: 1em;
+}
+
 Header {
   text-align: left;
   align-content: center;
   font-size: xx-large;
-  text-indent: 0.4em;
   padding-block-start: 0.3em;
   padding-block-end: 0.3em;
-  box-shadow: 0 3px 5px rgba(53, 55, 68, 0.25);
-  -moz-box-shadow: 0 3px 5px rgba(53, 55, 68, 0.25);
-  -webkit-box-shadow: 0 3px 5px rgba(53, 55, 68, 0.25);
+  background-color: var(--background-colour);
 }
 
 #header-bar {
@@ -36,7 +37,7 @@ Header {
   margin-bottom: 0.3em;
 }
 
-.logo {
+.media-widget {
   padding-left: 0.2em;
   height: 1em;
   float: right;
@@ -45,6 +46,12 @@ Header {
 .margin {
   width: 90%;
   margin: auto;
+}
+
+.drop {
+  box-shadow: 0 3px 5px rgba(53, 55, 68, 0.4);
+  -moz-box-shadow: 0 3px 5px rgba(53, 55, 68, 0.4);
+  -webkit-box-shadow: 0 3px 5px rgba(53, 55, 68, 0.4);
 }
 
 code {
