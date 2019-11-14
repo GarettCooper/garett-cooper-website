@@ -11,16 +11,16 @@ export interface GitCardProps {
 class GitCard extends React.Component<GitCardProps, {}> {
     render() {
         return (
-        <div className="git-card drop">
-            <a href={this.props.url}>
-                <div className="git-card-pad">
-                    <div className="git-card-header">
-                       <b>{this.props.title}</b> - <em>{this.props.lang}</em>
+        <a href={this.props.url}>
+            <div className="git-card drop">
+                    <div className="git-card-pad">
+                        <div className="git-card-header">
+                           <b>{this.props.title}</b> - <em>{this.props.lang}</em>
+                        </div>
+                        {this.props.desc}
                     </div>
-                    {this.props.desc}
-                </div>
-            </a>
-        </div>
+            </div>
+        </a>
         );
     }
 }
