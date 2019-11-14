@@ -13,6 +13,10 @@ a {
     color: inherit;
 }
 
+.git-info {
+    margin-block-end: 2em;
+}
+
 .git-card-pad {
     padding: 1em;
 }

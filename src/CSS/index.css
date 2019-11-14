@@ -16,6 +16,10 @@ html, body, #root, .App {
   height: 100%;
 }
 
+h1, h2 {
+  color: var(--seconday-colour);
+}
+
 ._loading_overlay_overlay {
   background: white !important;
 }

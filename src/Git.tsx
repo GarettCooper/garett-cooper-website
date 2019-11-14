@@ -8,7 +8,7 @@ export interface GitCardProps {
     desc: string;
 }
 
-export class GitCard extends React.Component<GitCardProps, {}> {
+class GitCard extends React.Component<GitCardProps, {}> {
     render() {
         return (
         <div className="git-card drop">
@@ -36,7 +36,7 @@ interface GitPanelState {
 
 
 
-export default class GitPanel extends  React.Component<GitPanelProps, GitPanelState>{
+export class GitPanel extends React.Component<GitPanelProps, GitPanelState>{
 
     constructor (props: {}) {
         super(props);
@@ -70,4 +70,20 @@ export default class GitPanel extends  React.Component<GitPanelProps, GitPanelSt
         </div>
         );
     }
+}
+
+export default class GitPage extends React.Component<GitPanelProps, {}>{
+
+    render () {
+        return (
+            <div className="git-page margin">
+                <div className="git-info">
+                    <h1>Open Source Projects</h1>
+                    These are a collection of the open source projects I've worked on, retrieved from my GitHub.
+                </div>
+                <GitPanel loadingCallback={this.props.loadingCallback}/>
+            </div>
+        )
+    }
+
 }

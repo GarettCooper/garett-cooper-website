@@ -2,7 +2,7 @@ import React from 'react';
 import LoadingOverlay from 'react-loading-overlay';
 import FadeSpinner from 'react-spinners/FadeLoader';
 import Header from './Header';
-import GitPanel from './Git'
+import GitPage from './Git'
 
 enum Page {
   Home,
@@ -36,7 +36,7 @@ export default class App extends  React.Component<{}, AppState>{
         break;
       case Page.OpenSourceProjects:
       default:
-        page = (<GitPanel loadingCallback={this.setLoading.bind(this)}/>);
+        page = (<GitPage loadingCallback={this.setLoading.bind(this)}/>);
     }
 
     return (<div className="App">
