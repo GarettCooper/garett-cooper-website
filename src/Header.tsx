@@ -1,7 +1,7 @@
 import React from 'react';
 import Headroom from 'react-headroom';
-import gitLogo from './Images/ThirdParty/GitHub-Mark.svg';
-import linkedInLogo from './Images/ThirdParty/LI-In-Bug.png';
+import gitLogo from './images/third_party/GitHub-Mark.svg';
+import linkedInLogo from './images/third_party/LI-In-Bug.png';
 
 export default class Header extends React.Component<{}, {}> {
     render() {

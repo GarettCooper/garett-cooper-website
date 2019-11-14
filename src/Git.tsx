@@ -1,5 +1,5 @@
 import React from 'react';
-import './CSS/Git.css'
+import './css/Git.css'
 
 export interface GitCardProps {
     title: string;
