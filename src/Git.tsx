@@ -6,6 +6,7 @@ export interface GitCardProps {
     url: string;
     lang: string;
     desc: string;
+    date: Date;
 }
 
 class GitCard extends React.Component<GitCardProps, {}> {
@@ -15,13 +16,24 @@ class GitCard extends React.Component<GitCardProps, {}> {
             <div className="git-card drop">
                     <div className="git-card-pad">
                         <div className="git-card-header">
-                           <b>{this.props.title}</b> - <em>{this.props.lang}</em>
+                            <b>{this.props.title}</b> - <em>{this.props.lang}</em>
+                            <span className="git-date">{formatDate(this.props.date)}</span>
                         </div>
                         {this.props.desc}
                     </div>
             </div>
         </a>
         );
+    }
+}
+
+function formatDate (date: Date) : string {
+    var local = new Date(date);
+    local.setMinutes(date.getMinutes() - date.getTimezoneOffset());
+    if (local.toJSON() !== null){
+        return local.toJSON().slice(0, 10);
+    } else {
+        return "0000-00-00"
     }
 }
 
@@ -49,7 +61,6 @@ export class GitPanel extends React.Component<GitPanelProps, GitPanelState>{
         try {
             let response = await fetch("https://api.github.com/users/GarettCooper/repos");
             this.setState({gitRepos: await response.json()});
-            console.log(this.state.gitRepos[0]);
             this.state.gitRepos.map(repo => console.log("Unique Key: " + repo.id));
             
             if (this.props.loadingCallback !== undefined) this.props.loadingCallback(false);
@@ -66,7 +77,7 @@ export class GitPanel extends React.Component<GitPanelProps, GitPanelState>{
     render() {
         return (
         <div className="git-panel">
-            {this.state.gitRepos.sort((a, b) => Date.parse(b.pushed_at).valueOf()-Date.parse(a.pushed_at).valueOf()).map(repo => (<GitCard key={repo.id} title={repo.name} url={repo.html_url} lang={repo.language} desc={repo.description}/>))}
+            {this.state.gitRepos.sort((a, b) => Date.parse(b.pushed_at)-Date.parse(a.pushed_at)).map(repo => (<GitCard key={repo.id} title={repo.name} url={repo.html_url} lang={repo.language} desc={repo.description} date={new Date(repo.pushed_at)}/>))}
         </div>
         );
     }

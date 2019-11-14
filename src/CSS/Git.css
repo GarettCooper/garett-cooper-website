@@ -17,6 +17,11 @@ a {
     margin-block-end: 2em;
 }
 
+.git-date {
+    float: right;
+    font-style: italic;
+}
+
 .git-card-pad {
     padding: 1em;
 }
