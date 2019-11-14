@@ -1,7 +1,7 @@
 .git-card {
     text-align: left;
     width: 80%;
-    height: 6em;
+    height: 8em;
     border-style: double;
     border-color: var(--seconday-colour);
     padding-top: 0.2em;
@@ -28,7 +28,7 @@ a {
     row-gap: 1em;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1100px) {
     .git-panel {
         grid-template-columns: auto;
     }
