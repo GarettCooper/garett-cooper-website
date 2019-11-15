@@ -1,6 +1,6 @@
 # garett-cooper-website
 
-This is the git repository for my personal website, which isn't hosted publicly anywhere while I work on it.
+This is the git repository for my personal website, which is only hosted publicly on my [github.io](https://garettcooper.github.io/garett-cooper-website/) while I work on it.
 
 Q: Isn't building a mostly static webpage that is little more that an online version of a résumé with a heavyweight framework like React complete overkill? 
 
