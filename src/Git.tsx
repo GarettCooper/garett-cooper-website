@@ -1,4 +1,5 @@
 import React from 'react';
+import { PageProps } from './App'
 import './css/Git.css'
 
 export interface GitCardProps {
@@ -12,7 +13,7 @@ export interface GitCardProps {
 class GitCard extends React.Component<GitCardProps, {}> {
     render() {
         return (
-        <a href={this.props.url}>
+        <a href={this.props.url} className="git-link">
             <div className="git-card drop">
                     <div className="git-card-pad">
                         <div className="git-card-header">
@@ -83,11 +84,11 @@ export class GitPanel extends React.Component<GitPanelProps, GitPanelState>{
     }
 }
 
-export default class GitPage extends React.Component<GitPanelProps, {}>{
+export default class GitPage extends React.Component<PageProps, {}>{
 
     render () {
         return (
-            <div className="git-page margin">
+            <div className="git-page page">
                 <div className="git-info">
                     <h1>Open Source Projects</h1>
                     These are a collection of the open source projects I've worked on, retrieved from my GitHub.
@@ -96,5 +97,4 @@ export default class GitPage extends React.Component<GitPanelProps, {}>{
             </div>
         )
     }
-
 }

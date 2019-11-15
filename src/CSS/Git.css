@@ -3,14 +3,13 @@
     width: 80%;
     height: 8em;
     border-style: double;
-    border-color: var(--seconday-colour);
+    border-color: var(--theme-colour);
     padding-top: 0.2em;
     margin: auto;
 }
 
-a {
+a.git-link {
     text-decoration: none;
-    color: inherit;
 }
 
 .git-info {
