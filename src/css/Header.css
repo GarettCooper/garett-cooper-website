@@ -24,7 +24,7 @@ Header {
 .header-tabs button {
     padding-bottom: 0.5em;
     padding-top: 0.5em;
-    opacity: 50%;
+    opacity: 0.5;
     /* Override all the default button styling */
     -webkit-appearance: inherit;
     -webkit-writing-mode: inherit !important;
@@ -47,6 +47,11 @@ Header {
     border-style: inherit;
     border-color: inherit;
     border-image: inherit;
+}
+
+
+Header button:disabled, Header button[disabled]{
+    opacity: 1 !important;
 }
 
 .header-tab {
@@ -74,10 +79,6 @@ Header {
     padding-left: 0.2em;
     height: 1em;
     float: right;
-}
-
-Header button:disabled, Header button[disabled]{
-    opacity: 100%;
 }
 
 @media only screen and (max-width: 767px) {
