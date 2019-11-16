@@ -77,7 +77,7 @@ export class GitPanel extends React.Component<GitPanelProps, GitPanelState>{
 
     render() {
         return (
-        <div className="git-panel">
+        <div className="git-panel slide-in-bottom">
             {this.state.gitRepos.sort((a, b) => Date.parse(b.pushed_at)-Date.parse(a.pushed_at)).map(repo => (<GitCard key={repo.id} title={repo.name} url={repo.html_url} lang={repo.language} desc={repo.description} date={new Date(repo.pushed_at)}/>))}
         </div>
         );
