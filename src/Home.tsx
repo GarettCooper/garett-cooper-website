@@ -23,7 +23,7 @@ export default class GitPage extends React.Component<PageProps, {}>{
                     <h1>Skills and Qualifications</h1>
                     <ul>
                         <li>Proficiency in many programming languages, including Java, C, C#, and Python, with a strong understanding of their strengths and weaknesses.</li>
-                        <li>Familiar with the structure of relational databases and the construction of efficient (My/Postegre/T-)SQL queries, as well as their usage in software development.</li>
+                        <li>Familiar with the structure of relational databases and the construction of efficient (My/Postgre/T-)SQL queries, as well as their usage in software development.</li>
                         <li>Understanding of web application architecture and technologies such as RESTful APIs, HTTP request methods, and data interchange formats.</li>
                         <li>Experience with both white and black box automated testing practices and design patterns.</li>
                     </ul>
