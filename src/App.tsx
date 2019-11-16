@@ -5,7 +5,7 @@ import Header from './Header';
 import GitPage from './Git';
 import HomePage from './Home';
 
-enum Page {
+export enum Page {
   Home,
   OpenSourceProjects
 }
@@ -32,6 +32,12 @@ export default class App extends  React.Component<{}, AppState>{
     this.setState({...this.state, loading: l});
   }
 
+  setPage (p: Page){
+    console.log("Set page: " + p)
+
+    this.setState({loading: true, page: p});
+  }
+
   render () {
     let page;
     switch (this.state.page){
@@ -44,8 +50,8 @@ export default class App extends  React.Component<{}, AppState>{
     }
 
     return (<div className="App">
-      <Header/>
-      <LoadingOverlay active={this.state.loading} spinner={<FadeSpinner height={64} width={32} radius={60} color="var(--theme-colour)"/>}>
+      <Header tabs={[{label: "Home", page: Page.Home}, {label: "Open Source Projects", page: Page.OpenSourceProjects}]} currentPage={this.state.page} setPageCallback={this.setPage.bind(this)}/>
+      <LoadingOverlay active={this.state.loading} spinner={<FadeSpinner height={64} width={32} radius={60} color="var(--theme-colour)"/>} fadeSpeed={500}>
         <div className="margin page">
           {page}
         </div>
