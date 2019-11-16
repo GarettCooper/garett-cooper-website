@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/garett-cooper-website/static/css/main.4c24a78a.chunk.css",
+    "main.css": "/garett-cooper-website/static/css/main.2ac42582.chunk.css",
     "main.js": "/garett-cooper-website/static/js/main.cc8fcc91.chunk.js",
     "main.js.map": "/garett-cooper-website/static/js/main.cc8fcc91.chunk.js.map",
     "runtime-main.js": "/garett-cooper-website/static/js/runtime-main.909b88f5.js",
@@ -8,15 +8,15 @@
     "static/js/2.8d6a0be5.chunk.js": "/garett-cooper-website/static/js/2.8d6a0be5.chunk.js",
     "static/js/2.8d6a0be5.chunk.js.map": "/garett-cooper-website/static/js/2.8d6a0be5.chunk.js.map",
     "index.html": "/garett-cooper-website/index.html",
-    "precache-manifest.f6ba9ed6598831d852e432ce4163ce8f.js": "/garett-cooper-website/precache-manifest.f6ba9ed6598831d852e432ce4163ce8f.js",
+    "precache-manifest.2ea63ed31472867330e52b3601784ada.js": "/garett-cooper-website/precache-manifest.2ea63ed31472867330e52b3601784ada.js",
     "service-worker.js": "/garett-cooper-website/service-worker.js",
-    "static/css/main.4c24a78a.chunk.css.map": "/garett-cooper-website/static/css/main.4c24a78a.chunk.css.map",
+    "static/css/main.2ac42582.chunk.css.map": "/garett-cooper-website/static/css/main.2ac42582.chunk.css.map",
     "static/media/GitHub-Mark.svg": "/garett-cooper-website/static/media/GitHub-Mark.00eca4fc.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.909b88f5.js",
     "static/js/2.8d6a0be5.chunk.js",
-    "static/css/main.4c24a78a.chunk.css",
+    "static/css/main.2ac42582.chunk.css",
     "static/js/main.cc8fcc91.chunk.js"
   ]
 }
