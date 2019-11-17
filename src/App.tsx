@@ -25,10 +25,23 @@ const headerTabs = [{label: "Home", page: Page.Home}, {label: "Open Source Proje
 export default class App extends  React.Component<{}, AppState>{
   constructor (props: {}){
     super(props)
+
+    let targetPage: Page;
+    // TODO: Rework this with a proper routing solution
+    switch (window.location.pathname) {
+        case "/Home":
+        default:
+          targetPage = Page.Home;
+          break;
+        case "/OpenSourceProjects":
+          targetPage = Page.OpenSourceProjects;
+          break;
+    }
+
     this.state = {
       loading: true,
       darkMode: false,
-      page: Page.Home
+      page: targetPage
     }
   }
 
@@ -37,17 +50,16 @@ export default class App extends  React.Component<{}, AppState>{
   }
 
   setPage (p: Page){
-    console.log("Set page: " + p)
-    this.setState({loading: true, page: p});
+    //console.log("Set page: " + p)
+    this.setState({...this.state, loading: true, page: p});
   }
 
   changeTheme (){
-    console.log("Change theme");
+    //console.log("Change theme");
     this.setState({...this.state, darkMode: !this.state.darkMode});
   }
 
   render () {
-
     // While not exactly in proper react style, I want the theme to be tied to the state of the App component while also covering the whole document.
     // By putting this in the render function, the theme will be updated with the App component.
     document.documentElement.className = this.state.darkMode ? "dark-mode" : "light-mode";
@@ -55,11 +67,13 @@ export default class App extends  React.Component<{}, AppState>{
     let page;
     switch (this.state.page){
       case Page.Home:
+      default:
         page = (<HomePage loadingCallback={this.setLoading.bind(this)}/>);
+        window.history.pushState('Home', 'Garett Cooper', '/Home');
         break;
       case Page.OpenSourceProjects:
-      default:
         page = (<GitPage loadingCallback={this.setLoading.bind(this)}/>);
+        window.history.pushState('Open Source Projects', 'Open Source Projects', '/OpenSourceProjects');
     }
 
     return (<div className="app">
