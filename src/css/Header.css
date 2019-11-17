@@ -17,7 +17,7 @@ Header {
 .header-tabs {
     vertical-align: center;
     color: var(--theme-colour);
-    padding-bottom: 0.5em;
+    padding-bottom: 0.2em;
     padding-top: 0.5em;
 }
 
@@ -28,6 +28,7 @@ Header {
     /* Override all the default button styling */
     -webkit-appearance: inherit;
     -webkit-writing-mode: inherit !important;
+    writing-mode: inherit !important;
     text-rendering: inherit;
     color: inherit;
     letter-spacing: inherit;
@@ -74,15 +75,37 @@ Header button:disabled, Header button[disabled]{
     margin-bottom: 0.3em;
 }
 
+.theme-switch {
+    float: right;
+    margin-left: 0.5em;
+    margin-top: 0.25em;
+}
+
+.theme-switch-icon {
+    /* Calculated with https://codepen.io/sosuke/pen/Pjoqqp */
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(147deg) brightness(103%) contrast(102%);
+    padding-top: 2px;
+    padding-left: 2px;
+}
+
 .media-widget {
     font-size: xx-large;
     padding-left: 0.2em;
     height: 1em;
+}
+
+.media-widgets {
     float: right;
 }
 
 @media only screen and (max-width: 767px) {
-    .header-tabs{
+    /* Come up with a better solution than this */
+    .header-tabs {
+        visibility: hidden;
+        display: none;
+    }
+
+    .media-widgets {
         visibility: hidden;
         display: none;
     }
