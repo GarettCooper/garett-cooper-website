@@ -28,12 +28,13 @@ export default class App extends  React.Component<{}, AppState>{
 
     let targetPage: Page;
     // TODO: Rework this with a proper routing solution
-    switch (window.location.pathname) {
-        case "/Home":
+    let path: string[] = window.location.pathname.split('/');
+    switch (path[path.length - 1]) {
+        case "Home":
         default:
           targetPage = Page.Home;
           break;
-        case "/OpenSourceProjects":
+        case "OpenSourceProjects":
           targetPage = Page.OpenSourceProjects;
           break;
     }
@@ -65,15 +66,18 @@ export default class App extends  React.Component<{}, AppState>{
     document.documentElement.className = this.state.darkMode ? "dark-mode" : "light-mode";
 
     let page;
+    let path: string[] = window.location.pathname.split('/');
     switch (this.state.page){
       case Page.Home:
       default:
         page = (<HomePage loadingCallback={this.setLoading.bind(this)}/>);
-        window.history.pushState('Home', 'Garett Cooper', '/Home');
+        path[path.length - 1] = "Home";
+        window.history.pushState('Home', 'Garett Cooper', path.join('/'));
         break;
       case Page.OpenSourceProjects:
         page = (<GitPage loadingCallback={this.setLoading.bind(this)}/>);
-        window.history.pushState('Open Source Projects', 'Open Source Projects', '/OpenSourceProjects');
+        path[path.length - 1] = "OpenSourceProjects";
+        window.history.pushState('OpenSourceProjects', 'Garett Cooper', path.join('/'));
     }
 
     return (<div className="app">
