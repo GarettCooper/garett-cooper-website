@@ -44,7 +44,7 @@ interface GitPanelProps {
 
 interface GitPanelState {
     //TODO: setup an actual type for the api response
-    gitRepos: [any]
+    gitRepos: any[]
 }
 
 
@@ -54,7 +54,7 @@ export class GitPanel extends React.Component<GitPanelProps, GitPanelState>{
     constructor (props: {}) {
         super(props);
         this.state = {
-            gitRepos: [0]
+            gitRepos: []
         }
     }
 
@@ -62,7 +62,7 @@ export class GitPanel extends React.Component<GitPanelProps, GitPanelState>{
         try {
             let response = await fetch("https://api.github.com/users/GarettCooper/repos");
             this.setState({gitRepos: await response.json()});
-            this.state.gitRepos.map(repo => console.log("Unique Key: " + repo.id));
+            //this.state.gitRepos.map(repo => console.log("Unique Key: " + repo.id));
             
             if (this.props.loadingCallback) this.props.loadingCallback(false);
 

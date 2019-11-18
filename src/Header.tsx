@@ -1,6 +1,7 @@
 import React from 'react';
 import Headroom from 'react-headroom';
 import Switch from 'react-switch';
+import {Link} from 'react-router-dom';
 import {Page} from './App';
 import gitLogo from './images/third_party/GitHub-Mark.svg';
 import linkedInLogo from './images/third_party/LI-In-Bug.png';
@@ -58,16 +59,12 @@ interface TabProps {
 
 class Tab extends React.Component<TabProps, {}> {
 
-    click () {
-        if (this.props.setPageCallback) this.props.setPageCallback(this.props.page)
-    }
-
     render () {
         return (
         <div className="header-tab inline">
-            <button onClick={this.click.bind(this)} disabled={this.props.active}>
+            <Link to={this.props.page}>
                 {this.props.label}
-            </button>           
+            </Link>
         </div>
         )
     }
