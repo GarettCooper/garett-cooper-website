@@ -1,5 +1,5 @@
 import React from 'react';
-import { PageProps } from './App'
+import { Page, PageProps } from './App'
 import './css/Git.css'
 
 export interface GitCardProps {
@@ -60,6 +60,7 @@ export class GitPanel extends React.Component<GitPanelProps, GitPanelState>{
 
     async componentDidMount () {
         try {
+            if (this.props.loadingCallback) this.props.loadingCallback(true);
             let response = await fetch("https://api.github.com/users/GarettCooper/repos");
             this.setState({gitRepos: await response.json()});
             //this.state.gitRepos.map(repo => console.log("Unique Key: " + repo.id));
@@ -86,14 +87,19 @@ export class GitPanel extends React.Component<GitPanelProps, GitPanelState>{
 
 export default class GitPage extends React.Component<PageProps, {}>{
 
-    render () {
+    componentDidMount() {
+        document.title = "Open Source Projects"
+        this.props.stateUpdateCallback({page: Page.OpenSourceProjects});
+    }
+
+    render() {
         return (
             <div className="git-page page">
                 <div className="git-info">
                     <h1>Open Source Projects</h1>
                     These are a collection of the open source projects I've worked on, retrieved from my GitHub.
                 </div>
-                <GitPanel loadingCallback={this.props.loadingCallback}/>
+                <GitPanel loadingCallback={(loading) => {this.props.stateUpdateCallback({loading: loading})}}/>
             </div>
         )
     }

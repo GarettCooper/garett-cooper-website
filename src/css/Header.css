@@ -26,6 +26,7 @@ Header {
 }
 
 .header-tab {
+    opacity: 0.5;
     margin-left: 2em;
     width: 20em;
     padding-bottom: inherit;
@@ -34,6 +35,10 @@ Header {
     border-bottom-width: 0.2em;
     border-bottom-color: var(--theme-colour);
     border-bottom-style: solid;
+}
+
+.header-tab.active {
+    opacity: 1;
 }
 
 #header-bar {

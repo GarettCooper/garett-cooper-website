@@ -1,11 +1,12 @@
 import React from 'react';
-import {PageProps} from './App'
+import {Page, PageProps} from './App'
 import './css/Home.css'
 
 export default class GitPage extends React.Component<PageProps, {}>{
 
     componentDidMount () {
-        if (this.props.loadingCallback !== undefined) this.props.loadingCallback(false);
+        document.title = "Garett Cooper";
+        this.props.stateUpdateCallback({loading: false, page: Page.Home});
     }
 
     render () {

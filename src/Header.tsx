@@ -14,7 +14,6 @@ interface HeaderProps {
     currentPage: Page;
     themeChecked: boolean;
     themeChangeCallback: () => void;
-    setPageCallback?: (arg0: Page) => void;
 }
 
 const lightIcon = (<img src={lightSymbol} alt="Light Mode Enabled" className="theme-switch-icon"/>);
@@ -25,7 +24,7 @@ export default class Header extends React.Component<HeaderProps, {}> {
         let tabs;
         if (this.props.tabs) {
             // Assumes one tab per page
-            tabs = this.props.tabs.map((tab) => (<Tab key={tab.page.valueOf()} label={tab.label} page={tab.page} setPageCallback={this.props.setPageCallback} active={tab.page === this.props.currentPage}/>))
+            tabs = this.props.tabs.map((tab) => (<Tab key={tab.page.valueOf()} label={tab.label} page={tab.page} active={tab.page === this.props.currentPage}/>))
             //if (tabs.length > 0) tabs[0].props.active = true;
         }
 
@@ -54,14 +53,13 @@ interface TabProps {
     label: string;
     page: Page;
     active: boolean;
-    setPageCallback?: (arg0: Page) => void;
 }
 
 class Tab extends React.Component<TabProps, {}> {
 
     render () {
         return (
-        <div className="header-tab inline">
+        <div className={this.props.active ? "header-tab inline active" : "header-tab inline"}>
             <Link to={this.props.page}>
                 {this.props.label}
             </Link>

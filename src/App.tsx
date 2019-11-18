@@ -16,7 +16,7 @@ export enum Page {
 }
 
 export interface PageProps {
-  loadingCallback?: (arg0: boolean) => void;
+  stateUpdateCallback: (state: {loading?: boolean, darkMode?: boolean, page?: Page}) => void;
 }
 
 interface AppState {
@@ -28,50 +28,46 @@ interface AppState {
 const headerTabs = [{label: "Home", page: Page.Home}, {label: "Open Source Projects", page: Page.OpenSourceProjects}];
 
 export default class App extends  React.Component<{}, AppState>{
-  constructor (props: {}){
+  constructor(props: {}){
     super(props)
 
     this.state = {
-      loading: true,
+      loading: false,
       darkMode: false,
       page: Page.Home
     }
   }
 
-  setLoading (l: boolean) {
-    this.setState({...this.state, loading: l});
+  stateUpdate(state: {loading?: boolean, darkMode?: boolean, page?: Page}) {
+    this.setState({
+      loading: state.loading ? state.loading : this.state.loading,
+      darkMode: state.darkMode ? state.darkMode : this.state.darkMode,
+      page: state.page ? state.page : this.state.page,
+    });
   }
 
-  setPage (p: Page){
-    //console.log("Set page: " + p)
-    this.setState({...this.state, loading: true, page: p});
-  }
-
-  changeTheme (){
-    //console.log("Change theme");
+  changeTheme(){
     this.setState({...this.state, darkMode: !this.state.darkMode});
   }
 
-  render () {
+  render() {
     // While not exactly in proper react style, I want the theme to be tied to the state of the App component while also covering the whole document.
     // By putting this in the render function, the theme will be updated with the App component.
     document.documentElement.className = this.state.darkMode ? "dark-mode" : "light-mode";
-
     return (
     <HashRouter>
       <div className="app">
-        <Header tabs={headerTabs} currentPage={this.state.page} themeChecked={this.state.darkMode} themeChangeCallback={this.changeTheme.bind(this)} setPageCallback={this.setPage.bind(this)}/>
+        <Header tabs={headerTabs} currentPage={this.state.page} themeChecked={this.state.darkMode} themeChangeCallback={this.changeTheme.bind(this)}/>
         <LoadingOverlay active={this.state.loading} spinner={<FadeSpinner height={64} width={32} radius={60} color="var(--theme-colour)"/>} fadeSpeed={500}>
           <div className="margin page">
             <Switch>              
               <Route path={Page.OpenSourceProjects}>
-                <GitPage loadingCallback={this.setLoading.bind(this)}/>
+                <GitPage stateUpdateCallback={this.stateUpdate.bind(this)}/>
               </Route>
               <Route path={Page.Home}>
-                <HomePage loadingCallback={this.setLoading.bind(this)}/>
+                <HomePage stateUpdateCallback={this.stateUpdate.bind(this)}/>
               </Route>
             </Switch>
-            {/*page*/}
           </div>
         </LoadingOverlay>
       </div>
