@@ -9,6 +9,7 @@ import lightSymbol from './images/material_icons/white-balance-sunny.svg';
 import darkSymbol from './images/material_icons/weather-night.svg';
 import "./css/Header.css"
 import menuSymbol from "./images/material_icons/menu-open.svg";
+import {BrowserView, CustomView, MobileOnlyView} from 'react-device-detect';
 
 interface HeaderProps {
     tabs?: {label: string, page: Page}[];
@@ -37,11 +38,18 @@ export default class Header extends React.Component<HeaderProps, {}> {
                     <div className="margin">
                         <div id="header-bar"/>
                         <span className="header-name">Garett Cooper</span>
-                        <div className="header-tabs inline">{tabs}</div>
-                        <div className="header-menu-button inline">
-                            <input type="image" className="menu-button" src={menuSymbol} alt="Open Menu" onClick={() => this.props.menuOpenCallback(true)}/>
-                        </div>
-                        <HeaderButtons themeChecked={this.props.themeChecked} themeChangeCallback={this.props.themeChangeCallback}/>
+                        <BrowserView renderWithFragment={true}>
+                            <div className="header-tabs inline">{tabs}</div>
+                        </BrowserView>
+                        <MobileOnlyView renderWithFragment={true}>
+
+                            <div className="header-menu-button inline">
+                                <input type="image" className="menu-button" src={menuSymbol} alt="Open Menu" onClick={() => this.props.menuOpenCallback(true)}/>
+                            </div>
+                        </MobileOnlyView>
+                        <BrowserView renderWithFragment={true}>
+                            <HeaderButtons themeChecked={this.props.themeChecked} themeChangeCallback={this.props.themeChangeCallback}/>
+                        </BrowserView>
                     </div>
                 </header>
             </div>

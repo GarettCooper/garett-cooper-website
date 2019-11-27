@@ -54,11 +54,6 @@ Header {
     margin-bottom: 0.3em;
 }
 
-.header-menu-button {
-    visibility: hidden;
-    display: none;
-}
-
 .theme-switch {
     margin-left: 0.5em;
     margin-top: 0.2em;
@@ -84,22 +79,4 @@ Header {
 
 .header .media-widgets {
     float: right;
-}
-
-@media only screen and (max-width: 767px) {
-    /* Come up with a better solution than this */
-    .header-tabs {
-        visibility: hidden;
-        display: none;
-    }
-
-    .header-menu-button {
-        visibility: inherit !important;
-        display: inline !important;
-    }
-
-    Header .header-buttons {
-        visibility: hidden;
-        display: none;
-    }
 }

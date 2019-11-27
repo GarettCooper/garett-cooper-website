@@ -10,6 +10,7 @@ import {
   Route,
   HashRouter,
 } from "react-router-dom";
+import {BrowserView, MobileOnlyView} from "react-device-detect";
 
 export enum Page {
   Home = "/",
@@ -61,14 +62,13 @@ export default class App extends  React.Component<{}, AppState>{
     // While not exactly in proper react style, I want the theme to be tied to the state of the App component while also covering the whole document.
     // By putting this in the render function, the theme will be updated with the App component.
     document.documentElement.className = this.state.darkMode ? "dark-mode" : "light-mode";
-    return (
-    <HashRouter>
-      <div className="app">
-        <Menu isOpen={this.state.menuOpen} themeChecked={this.state.darkMode} themeChangeCallback={this.changeTheme.bind(this)} menuOpenCallback={this.setMenuOpen.bind(this)}>
+
+    let pageContent = (
+        <div className="page-content">
           <Header tabs={headerTabs} currentPage={this.state.page} themeChecked={this.state.darkMode} themeChangeCallback={this.changeTheme.bind(this)} menuOpenCallback={this.setMenuOpen.bind(this)}/>
           <LoadingOverlay active={this.state.loading} spinner={<FadeSpinner height={64} width={32} radius={60} color="var(--theme-colour)"/>} fadeSpeed={500}>
             <div className="margin page">
-              <Switch>              
+              <Switch>
                 <Route path={Page.OpenSourceProjects}>
                   <GitPage stateUpdateCallback={this.stateUpdate.bind(this)}/>
                 </Route>
@@ -78,7 +78,18 @@ export default class App extends  React.Component<{}, AppState>{
               </Switch>
             </div>
           </LoadingOverlay>
-        </Menu>
+        </div>
+    );
+
+    return (
+    <HashRouter>
+      <div className="app">
+        <BrowserView>{pageContent}</BrowserView>
+        <MobileOnlyView>
+          <Menu isOpen={this.state.menuOpen} themeChecked={this.state.darkMode} themeChangeCallback={this.changeTheme.bind(this)} menuOpenCallback={this.setMenuOpen.bind(this)}>
+            {pageContent}
+          </Menu>
+        </MobileOnlyView>
       </div>
     </HashRouter>
     )  
