@@ -2,7 +2,7 @@
   "name": "garett-cooper-website",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://garettcooper.github.io/garett-cooper-website/",
+  "homepage": "https://garettcooper.com",
   "dependencies": {
     "@types/jest": "24.0.23",
     "@types/node": "12.12.7",
@@ -28,7 +28,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gsutil -m rsync -R build gs://garettcooper.com"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -46,7 +46,6 @@
     ]
   },
   "devDependencies": {
-    "@types/react-headroom": "^2.2.1",
-    "gh-pages": "^2.1.1"
+    "@types/react-headroom": "^2.2.1"
   }
 }
