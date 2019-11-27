@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "486820551c06344f24290b2f2731466a",
+    "revision": "06a3fb2c6ee5e56c01a1f9113c1f4d68",
     "url": "/garett-cooper-website/index.html"
   },
   {
-    "revision": "76b0741c142b38484e81",
+    "revision": "33e12dad4ca895544b5a",
     "url": "/garett-cooper-website/static/css/main.b4e13d96.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/garett-cooper-website/static/js/2.201fe4e9.chunk.js"
   },
   {
-    "revision": "76b0741c142b38484e81",
-    "url": "/garett-cooper-website/static/js/main.4101ddf1.chunk.js"
+    "revision": "33e12dad4ca895544b5a",
+    "url": "/garett-cooper-website/static/js/main.6651c3a3.chunk.js"
   },
   {
     "revision": "30fea56d25af9c3aed69",
