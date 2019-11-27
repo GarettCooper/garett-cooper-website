@@ -22,8 +22,8 @@ export default class Menu extends React.Component<MenuProps, {}> {
                 <input type="image" className="menu-button" src={closeSymbol} alt="Close Menu" onClick={() => this.props.menuOpenCallback(false)}/>
             </div>
             <div className="sidebar-items">
-                <Link to={Page.Home} className="sidebar-item"><b>Home</b></Link>
-                <Link to={Page.OpenSourceProjects} className="sidebar-item"><b>Open Source Projects</b></Link>
+                <Link to={Page.Home} className="sidebar-item" onClick={() => this.props.menuOpenCallback(false)}><b>Home</b></Link>
+                <Link to={Page.OpenSourceProjects} className="sidebar-item" onClick={() => this.props.menuOpenCallback(false)}><b>Open Source Projects</b></Link>
             </div>
         </div>);
 
