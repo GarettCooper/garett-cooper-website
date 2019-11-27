@@ -37,6 +37,10 @@ Header {
     border-bottom-style: solid;
 }
 
+.header-menu-button {
+    float: right;
+}
+
 .header-tab.active {
     opacity: 1;
 }
@@ -50,10 +54,19 @@ Header {
     margin-bottom: 0.3em;
 }
 
+.header-menu-button {
+    visibility: hidden;
+    display: none;
+}
+
 .theme-switch {
-    float: right;
     margin-left: 0.5em;
-    margin-top: 0.25em;
+    margin-top: 0.2em;
+    vertical-align: top;
+}
+
+.header .theme-switch {
+    float: right;
 }
 
 .theme-switch-icon {
@@ -69,7 +82,7 @@ Header {
     height: 1em;
 }
 
-.media-widgets {
+.header .media-widgets {
     float: right;
 }
 
@@ -80,7 +93,12 @@ Header {
         display: none;
     }
 
-    .media-widgets {
+    .header-menu-button {
+        visibility: inherit !important;
+        display: inline !important;
+    }
+
+    Header .header-buttons {
         visibility: hidden;
         display: none;
     }

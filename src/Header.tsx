@@ -8,12 +8,14 @@ import linkedInLogo from './images/third_party/LI-In-Bug.png';
 import lightSymbol from './images/material_icons/white-balance-sunny.svg';
 import darkSymbol from './images/material_icons/weather-night.svg';
 import "./css/Header.css"
+import menuSymbol from "./images/material_icons/menu-open.svg";
 
 interface HeaderProps {
     tabs?: {label: string, page: Page}[];
     currentPage: Page;
     themeChecked: boolean;
     themeChangeCallback: () => void;
+    menuOpenCallback: (open: boolean) => void;
 }
 
 const lightIcon = (<img src={lightSymbol} alt="Light Mode Enabled" className="theme-switch-icon"/>);
@@ -36,11 +38,10 @@ export default class Header extends React.Component<HeaderProps, {}> {
                         <div id="header-bar"/>
                         <span className="header-name">Garett Cooper</span>
                         <div className="header-tabs inline">{tabs}</div>
-                        <div className="media-widgets inline">
-                            <a href="https://github.com/GarettCooper"><img src={gitLogo} className="media-widget" alt="GitHub logo"/></a>
-                            <a href="https://www.linkedin.com/in/garett-cooper-b7b4a8128/"><img src={linkedInLogo} className="media-widget" alt="LinkedIn logo" /></a>
+                        <div className="header-menu-button inline">
+                            <input type="image" className="menu-button" src={menuSymbol} alt="Open Menu" onClick={() => this.props.menuOpenCallback(true)}/>
                         </div>
-                        <Switch onChange={this.props.themeChangeCallback} checked={this.props.themeChecked} className="theme-switch" aria-label="Dark Mode Switch" uncheckedIcon={lightIcon} checkedIcon={darkIcon} onColor="#00ab44"/>
+                        <HeaderButtons themeChecked={this.props.themeChecked} themeChangeCallback={this.props.themeChangeCallback}/>
                     </div>
                 </header>
             </div>
@@ -64,6 +65,26 @@ class Tab extends React.Component<TabProps, {}> {
                 {this.props.label}
             </Link>
         </div>
+        )
+    }
+}
+
+
+interface HeaderButtonProps {
+    themeChecked: boolean;
+    themeChangeCallback: () => void;
+}
+
+export class HeaderButtons extends React.Component<HeaderButtonProps, {}> {
+    render() {
+        return(
+            <div className="header-buttons inline">
+                <div className="media-widgets inline">
+                    <a href="https://github.com/GarettCooper"><img src={gitLogo} className="media-widget" alt="GitHub logo"/></a>
+                    <a href="https://www.linkedin.com/in/garett-cooper-b7b4a8128/"><img src={linkedInLogo} className="media-widget" alt="LinkedIn logo" /></a>
+                </div>
+                <Switch onChange={this.props.themeChangeCallback} checked={this.props.themeChecked} className="theme-switch" aria-label="Dark Mode Switch" uncheckedIcon={lightIcon} checkedIcon={darkIcon} onColor="#00ab44"/>
+            </div>
         )
     }
 }

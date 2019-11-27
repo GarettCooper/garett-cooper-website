@@ -15,9 +15,20 @@
 
 .dark-mode {
   color: rgb(255, 255, 255);
-  --primary-text-colour:  rgb(202, 200, 187);
+  --primary-text-colour:  rgb(255, 255, 255);
   --secondary-text-colour: rgb(153,153,153);
   --background-colour: rgb(18, 18, 18);
+}
+
+.menu-button {
+  height: 37px;
+  /* Light Mode Filter */
+  filter: invert(18%) sepia(17%) saturate(606%) hue-rotate(194deg) brightness(96%) contrast(88%);
+}
+
+.dark-mode .menu-button {
+   /* Dark Mode Filter */
+  filter: invert(99%) sepia(7%) saturate(277%) hue-rotate(180deg) brightness(113%) contrast(100%) !important;
 }
 
 a {

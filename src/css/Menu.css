@@ -1,0 +1,40 @@
+.sidebar-frame {
+    padding: 1em 1em 0;
+}
+
+.sidebar-items {
+    background: var(--background-colour);
+    padding-bottom: 1em;
+}
+
+.sidebar {
+    background: var(--background-colour);
+    width: 300px;
+    z-index: 11 !important;
+}
+
+.sidebar-overlay {
+    z-index: 10 !important;
+}
+
+.sidebar-close {
+    float: right;
+}
+
+.sidebar-item {
+    padding: 0.75em;
+    border-top-style: solid;
+    border-top-width: 2px;
+    font-size: large;
+    color: var(--theme-colour);
+    display: block;
+}
+
+.sidebar .header-buttons {
+    margin-bottom: 1em;
+    display: inline-block;
+}
+
+.sidebar-items a {
+    text-decoration: none;
+}
