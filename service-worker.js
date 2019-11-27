@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/garett-cooper-website/precache-manifest.e02696595371539c4382eeea163a0b55.js"
+  "/garett-cooper-website/precache-manifest.3d27b0c41a828ad5b167ffbd06c5b013.js"
 );
 
 self.addEventListener('message', (event) => {

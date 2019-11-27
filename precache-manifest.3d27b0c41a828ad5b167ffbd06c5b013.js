@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ebcc6048895fe2c1b028e85d10c8de21",
+    "revision": "486820551c06344f24290b2f2731466a",
     "url": "/garett-cooper-website/index.html"
   },
   {
-    "revision": "ea0ebbe8870f58410df9",
-    "url": "/garett-cooper-website/static/css/main.99f685d4.chunk.css"
+    "revision": "76b0741c142b38484e81",
+    "url": "/garett-cooper-website/static/css/main.b4e13d96.chunk.css"
   },
   {
-    "revision": "cedd74feb7ff8819971a",
-    "url": "/garett-cooper-website/static/js/2.29ccfd9a.chunk.js"
+    "revision": "3661e4e6ee545f7e8f6e",
+    "url": "/garett-cooper-website/static/js/2.201fe4e9.chunk.js"
   },
   {
-    "revision": "ea0ebbe8870f58410df9",
-    "url": "/garett-cooper-website/static/js/main.8b84c3f5.chunk.js"
+    "revision": "76b0741c142b38484e81",
+    "url": "/garett-cooper-website/static/js/main.4101ddf1.chunk.js"
   },
   {
     "revision": "30fea56d25af9c3aed69",
@@ -22,6 +22,14 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "5551dfea758cdb4b30d80f2c8de8a249",
     "url": "/garett-cooper-website/static/media/GitHub-Mark.5551dfea.svg"
+  },
+  {
+    "revision": "32d19c01b96dfdf46d1b1f0a582320ff",
+    "url": "/garett-cooper-website/static/media/close.32d19c01.svg"
+  },
+  {
+    "revision": "77324ca1f660f9833a2347f97cd83809",
+    "url": "/garett-cooper-website/static/media/menu-open.77324ca1.svg"
   },
   {
     "revision": "bb3fd42f77784546e8181b8b806306da",
