@@ -9,7 +9,7 @@ import lightSymbol from './images/material_icons/white-balance-sunny.svg';
 import darkSymbol from './images/material_icons/weather-night.svg';
 import "./css/Header.css"
 import menuSymbol from "./images/material_icons/menu-open.svg";
-import {BrowserView, CustomView, MobileOnlyView} from 'react-device-detect';
+import {BrowserView, MobileOnlyView} from 'react-device-detect';
 
 interface HeaderProps {
     tabs?: {label: string, page: Page}[];
