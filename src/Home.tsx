@@ -15,7 +15,8 @@ export default class GitPage extends React.Component<PageProps, {}>{
                 <div className="home-info">
                     <h1>Hello</h1>
                     <p>
-                        Welcome to my personal website. My name is Garett Cooper, but you probably figured that out already.
+                        {window.location.href.indexOf("dev.garettcooper") !== -1 ? (<b>Welcome to the development version of personal website. </b>) : "Welcome to my personal website. "}
+                        My name is Garett Cooper, but you probably figured that out already.
                         For the time being, it is essentially an online résumé with a demonstration of basic React competency, but I plan to continue adding features to it as I have the time.
                         In future I would like to include a web assembly based version of my <a href="https://github.com/GarettCooper/gc_nes_emulator">gc_nes_emulator</a>, but that will have to wait.
                     </p>
