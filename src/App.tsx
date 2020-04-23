@@ -34,9 +34,11 @@ export default class App extends  React.Component<{}, AppState>{
   constructor(props: {}){
     super(props);
 
+    const darkMode = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+
     this.state = {
       loading: false,
-      darkMode: false,
+      darkMode: darkMode,
       menuOpen: false,
       page: Page.Home
     }
