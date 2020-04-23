@@ -46,9 +46,9 @@ export default class App extends  React.Component<{}, AppState>{
 
   stateUpdate(state: {loading?: boolean, darkMode?: boolean, menuOpen?: boolean, page?: Page}) {
     this.setState({
-      loading: state.loading ? state.loading : this.state.loading,
-      darkMode: state.darkMode ? state.darkMode : this.state.darkMode,
-      page: state.page ? state.page : this.state.page,
+      loading: state.loading || this.state.loading,
+      darkMode: state.darkMode || this.state.darkMode,
+      page: state.page || this.state.page,
     });
   }
 
