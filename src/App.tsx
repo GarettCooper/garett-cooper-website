@@ -3,6 +3,7 @@ import LoadingOverlay from 'react-loading-overlay';
 import FadeSpinner from 'react-spinners/FadeLoader';
 import Header from './Header';
 import GitPage from './Git';
+import NesPage from "./Nes";
 import HomePage from './Home';
 import Menu from './Menu';
 import {
@@ -14,7 +15,8 @@ import {BrowserView, MobileOnlyView} from "react-device-detect";
 
 export enum Page {
   Home = "/",
-  OpenSourceProjects = "/open-source-projects"
+  OpenSourceProjects = "/open-source-projects",
+  NesEmulator = "/nes-emulator"
 }
 
 export interface PageProps {
@@ -28,7 +30,7 @@ interface AppState {
   page: Page
 }
 
-const headerTabs = [{label: "Home", page: Page.Home}, {label: "Open Source Projects", page: Page.OpenSourceProjects}];
+const headerTabs = [{label: "Home", page: Page.Home}, {label: "Open Source Projects", page: Page.OpenSourceProjects}, {label: "NES Emulator", page: Page.NesEmulator}];
 
 export default class App extends  React.Component<{}, AppState>{
   constructor(props: {}){
@@ -71,6 +73,9 @@ export default class App extends  React.Component<{}, AppState>{
           <LoadingOverlay active={this.state.loading} spinner={<FadeSpinner height={64} width={32} radius={60} color="var(--theme-colour)"/>} fadeSpeed={500}>
             <div className="margin page">
               <Switch>
+                <Route path={Page.NesEmulator}>
+                  <NesPage stateUpdateCallback={this.stateUpdate.bind(this)}/>
+                </Route>
                 <Route path={Page.OpenSourceProjects}>
                   <GitPage stateUpdateCallback={this.stateUpdate.bind(this)}/>
                 </Route>

@@ -16,7 +16,7 @@
 .dark-mode {
   color: rgb(255, 255, 255);
   --primary-text-colour:  rgb(255, 255, 255);
-  --secondary-text-colour: rgb(153,153,153);
+  --secondary-text-colour: rgb(153, 153, 153);
   --background-colour: rgb(18, 18, 18);
 }
 
