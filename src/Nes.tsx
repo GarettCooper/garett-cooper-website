@@ -17,11 +17,21 @@ export default class NesPage extends React.Component<PageProps, NesPageState>{
 
     nesCanvas: RefObject<HTMLCanvasElement>;
     nesScaling: number;
+    offscreenCanvasSupport: boolean;
     constructor(props: Readonly<PageProps>) {
         super(props);
         this.nesCanvas = React.createRef();
         this.controlInput = 0;
         this.nesScaling = 2;
+
+        try {
+            let offscreenCanvas = new OffscreenCanvas(256, 240);
+            offscreenCanvas.getContext("2d");
+            this.offscreenCanvasSupport = true;
+        } catch {
+            this.offscreenCanvasSupport = false;
+        }
+        console.log("Offscreen canvas support: " + this.offscreenCanvasSupport);
     }
 
     async componentDidMount() {
@@ -52,8 +62,8 @@ export default class NesPage extends React.Component<PageProps, NesPageState>{
             console.log(file.name);
             const reader = new FileReader()
 
-            reader.onabort = () => console.log('File reading was aborted')
-            reader.onerror = () => console.log('File reading has failed')
+            reader.onabort = () => console.warn('File reading was aborted')
+            reader.onerror = () => console.error('File reading has failed')
             reader.onload = async () => {
                 let rom = new Uint8Array(reader.result as ArrayBuffer);
                 this.runGame(rom);
@@ -93,6 +103,23 @@ export default class NesPage extends React.Component<PageProps, NesPageState>{
         return (
             <div className="nes-page page">
                 <BrowserView>
+                    { this.renderNesPlayerIfOffscreenCanvasSupported() }
+                </BrowserView>
+                <MobileOnlyView>
+                    <div className="nes-info">
+                        <h1>The GC NES Emulator</h1>
+                        Sorry, the GC NES Emulator isn't currently supported on Mobile Platforms. Try opening this link
+                        on your laptop or desktop.
+                    </div>
+                </MobileOnlyView>
+            </div>
+        )
+    }
+
+    private renderNesPlayerIfOffscreenCanvasSupported() {
+        if (this.offscreenCanvasSupport) {
+            return (
+                <div>
                     <div className="nes-info">
                         <h1>The GC NES Emulator</h1>
                         Try playing my Nintendo Entertainment System Emulator, running right in your browser through the power of Rust and WebAssembly!
@@ -100,7 +127,7 @@ export default class NesPage extends React.Component<PageProps, NesPageState>{
                     <div className="nes-game">
                             <span className="nes-game-items">
                                 <div className="nes-canvas-wrapper">
-                                    <canvas id="nes-canvas" width={256 * this.nesScaling} height={240 * this.nesScaling} ref={this.nesCanvas}/>
+                                    <canvas id="nes-canvas" style={{width: 256 * this.nesScaling, height: 240 * this.nesScaling}}  width={256 * this.nesScaling} height={240 * this.nesScaling} ref={this.nesCanvas}/>
                                 </div>
                                 <div className="nes-game-controls">
                                     <div className="nes-game-scale-buttons">
@@ -157,22 +184,17 @@ export default class NesPage extends React.Component<PageProps, NesPageState>{
                         If you know how to fix this, feel free to reach out to me at <a href="mailto:garett@garettcooper.com">garett@garettcooper.com</a>.
                         For guaranteed pixel-perfect scaling, you can download a version of the emulator natively compiled for
                         your whichever platform you choose on <a href="https://github.com/GarettCooper/gc_nes_emulator">my GitHub</a>.
-                        <h2>Why did my controls get stuck?</h2>
-                        Key inputs are detected using browser keydown and keyup events, which do not fire 100% of the time.
-                        This results in dropped inputs when keydown is missed and stuck input when keyup is. At some point
-                        I'd like to resolve this issue (<a href="mailto:garett@garettcooper.com">garett@garettcooper.com</a> if
-                        you have any ideas), but for now I decided that it was not enough of a problem to block the first release.
                     </div>
-                </BrowserView>
-                <MobileOnlyView>
-                    <div className="nes-info">
-                        <h1>The GC NES Emulator</h1>
-                        Sorry, the GC NES Emulator isn't currently supported on Mobile Platforms. Try opening this link
-                        on your laptop or desktop.
-                    </div>
-                </MobileOnlyView>
-            </div>
-        )
+                </div>)
+        } else {
+            return (
+                <div>
+                    <h1>The GC NES Emulator</h1>
+                    Sorry, the GC NES Emulator currently requires browser support for <a href="https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas">OffscreenCanvas</a> in
+                    order to provide player scaling functionality. Try opening this link in a different browser.
+                </div>
+            )
+        }
     }
 
     private setScaling(scaling: number) {
