@@ -10,7 +10,7 @@
     "@types/react-dom": "16.9.4",
     "@types/react-router-dom": "^5.1.4",
     "@types/react-sidebar": "^3.0.0",
-    "gc_nes_web": "^0.1.4",
+    "gc_nes_web": "^0.1.5",
     "react": "^16.13.1",
     "react-device-detect": "^1.11.14",
     "react-dom": "^16.13.1",
