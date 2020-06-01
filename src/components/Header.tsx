@@ -3,13 +3,13 @@ import Headroom from 'react-headroom';
 import Switch from 'react-switch';
 import {Link} from 'react-router-dom';
 import {Page} from './App';
-import gitLogo from './images/third_party/GitHub-Mark.svg';
-import linkedInLogo from './images/third_party/LI-In-Bug.png';
-import twitterLogo from './images/third_party/Twitter_Social_Icon_Rounded_Square_Color.svg';
-import lightSymbol from './images/material_icons/white-balance-sunny.svg';
-import darkSymbol from './images/material_icons/weather-night.svg';
-import "./css/Header.css"
-import menuSymbol from "./images/material_icons/menu-open.svg";
+import gitLogo from '../images/third_party/GitHub-Mark.svg';
+import linkedInLogo from '../images/third_party/LI-In-Bug.png';
+import twitterLogo from '../images/third_party/Twitter_Social_Icon_Rounded_Square_Color.svg';
+import lightSymbol from '../images/material_icons/white-balance-sunny.svg';
+import darkSymbol from '../images/material_icons/weather-night.svg';
+import "../css/Header.css"
+import menuSymbol from "../images/material_icons/menu-open.svg";
 import {BrowserView, MobileOnlyView} from 'react-device-detect';
 
 interface HeaderProps {

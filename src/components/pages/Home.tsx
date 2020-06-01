@@ -1,6 +1,6 @@
 import React from 'react';
-import {Page, PageProps} from './App'
-import './css/Home.css'
+import {Page, PageProps} from '../App'
+import '../../css/Home.css'
 
 export default class GitPage extends React.Component<PageProps, {}>{
 

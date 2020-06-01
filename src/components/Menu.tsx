@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { Page } from './App';
 import { HeaderButtons } from './Header';
 import Sidebar from 'react-sidebar';
-import './css/Menu.css';
-import closeSymbol from './images/material_icons/close.svg';
+import '../css/Menu.css';
+import closeSymbol from '../images/material_icons/close.svg';
 
 interface MenuProps {
     isOpen: boolean

@@ -2,9 +2,9 @@ import React from 'react';
 import LoadingOverlay from 'react-loading-overlay';
 import FadeSpinner from 'react-spinners/FadeLoader';
 import Header from './Header';
-import GitPage from './Git';
-import NesPage from "./Nes";
-import HomePage from './Home';
+import GitPage from './pages/Git';
+import NesPage from "./pages/Nes";
+import HomePage from './pages/Home';
 import Menu from './Menu';
 import {
   Switch,

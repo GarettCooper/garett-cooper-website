@@ -1,6 +1,6 @@
 import React from 'react';
-import { Page, PageProps } from './App'
-import './css/Git.css'
+import { Page, PageProps } from '../App'
+import '../../css/Git.css'
 
 export interface GitCardProps {
     title: string;

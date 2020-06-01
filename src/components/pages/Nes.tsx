@@ -1,9 +1,9 @@
 import React, {RefObject} from "react";
-import {Page, PageProps} from "./App";
+import {Page, PageProps} from "../App";
 import Dropzone from "react-dropzone";
-import './css/Nes.css'
+import '../../css/Nes.css'
 import {BrowserView, MobileOnlyView} from "react-device-detect";
-import SplashScreen from "./images/GC_NES_Emulator_Splash.png"
+import SplashScreen from "../../images/GC_NES_Emulator_Splash.png"
 
 interface NesPageState {
     romLoaded: boolean,
