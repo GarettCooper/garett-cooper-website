@@ -45,7 +45,7 @@ export default class NesPage extends React.Component<PageProps, NesPageState>{
             nesScaling: 2
         });
 
-        // TODO: Splash screen
+        this.showSplashScreen();
 
         document.addEventListener("keydown", this.keyDownHandler.bind(this));
         document.addEventListener("keyup", this.keyUpHandler.bind(this));
@@ -72,6 +72,17 @@ export default class NesPage extends React.Component<PageProps, NesPageState>{
         }
     }
 
+    async showSplashScreen() {
+        let mainCanvasContext = this.nesCanvas?.current?.getContext("2d");
+        while (!this.state.romLoaded) {
+            this.setScaling(this.state.nesScaling);
+            let image =  new Image()
+            image.src = SplashScreen;
+            mainCanvasContext?.drawImage(image , 0, 0);
+            await new Promise( resolve => setTimeout(resolve, 15));
+        }
+    }
+
     async runGame(rom: Uint8Array) {
         let nes = this.state.wasm.nes(rom);
         this.setState({romLoaded: true})
@@ -90,7 +101,6 @@ export default class NesPage extends React.Component<PageProps, NesPageState>{
                 // Set scaling every frame to resolve issue where scaling buttons would need to be clicked twice.
                 // Not the best solution, but works for now.
                 this.setScaling(this.state.nesScaling);
-                // console.log(performance.now() - frameStart)
                 mainCanvasContext.drawImage(offscreenCanvas, 0, 0);
                 // TODO: Warning if frame is too slow
                 await new Promise( resolve => setTimeout(resolve, 16 - (performance.now() - frameStart)) );
