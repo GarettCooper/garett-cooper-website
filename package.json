@@ -28,10 +28,7 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
-    "eject": "react-app-rewired eject",
-    "predeploy": "npm run build",
-    "deploy": "gsutil -m rsync -d -R build gs://dev.garettcooper.com",
-    "deploylive": "npm run build && gsutil -m rsync -R build gs://garettcooper.com"
+    "eject": "react-app-rewired eject"
   },
   "eslintConfig": {
     "extends": "react-app"

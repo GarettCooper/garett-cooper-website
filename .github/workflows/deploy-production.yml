@@ -1,0 +1,33 @@
+name: Deploy Release
+
+on:
+  release:
+    types: [ released ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install react-app-rewired
+        run: npm install react-app-rewired
+
+      - name: NPM Build
+        run: |-
+          cd $GITHUB_WORKSPACE
+          npm run build
+
+      - name: Copy to production gcloud bucket
+        uses: actions-hub/gcloud@master
+        env:
+          PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+          APPLICATION_CREDENTIALS: ${{ secrets.GCP_STORAGE_ADMIN }}
+        with:
+          args: -m rsync -d -R build gs://garettcooper.com"
+          cli: gsutil
+
