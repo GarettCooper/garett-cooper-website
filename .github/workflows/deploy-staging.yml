@@ -30,7 +30,7 @@ jobs:
     - name: Copy to gcloud bucket
       uses: actions-hub/gcloud@master
       env:
-        PROJECT_ID: Personal Website
+        PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
         APPLICATION_CREDENTIALS: ${{ secrets.GCP_STORAGE_ADMIN }}
       with:
         args: -m rsync -d -R build gs://dev.garettcooper.com"
