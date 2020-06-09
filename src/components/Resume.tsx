@@ -1,12 +1,13 @@
 import React from "react";
 
 interface ResumeProps {
-    keywords?: string[],
-    length?: number
+    keywords?: string[];
+    length?: number;
+    history?: any;
 }
 
 interface ResumeState {
-    resume?: Resume
+    resume?: Resume;
 }
 
 export default class ResumeComponent extends React.Component<ResumeProps, ResumeState> {
@@ -19,21 +20,23 @@ export default class ResumeComponent extends React.Component<ResumeProps, Resume
     }
 
     async componentDidMount () {
-        try {
-            let queryString = "";
+        let queryString = "";
+        if (this.props.keywords) {
+            queryString += "keywords=" + this.props.keywords.join(",");
+        }
+        if (this.props.length) {
             if (this.props.keywords) {
-                queryString += "keywords=" + this.props.keywords.join(",");
-                if (this.props.length) {
-                    queryString += "&";
-                }
+                queryString += "&";
             }
-            if (this.props.length) {
-                queryString += "size=" + this.props.length;
-            }
-            let response = await fetch("https://api.garettcooper.com/resume?" + queryString);
-            this.setState({resume: await response.json()});
-        } catch (error) {
-            console.log(error);
+            queryString += "length=" + this.props.length;
+        }
+        let response = await fetch("https://api.garettcooper.com/resume?" + queryString);
+        this.setState({resume: await response.json()});
+
+        if (queryString.length > 0) {
+            this.props.history.push({
+                search: queryString
+            });
         }
     }
 

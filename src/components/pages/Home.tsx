@@ -23,7 +23,7 @@ export default class HomePage extends React.Component<PageProps, {}>{
                         {isMobile ? ". Switch to a desktop or laptop" : " which allows you"} to play classic Nintendo Entertainment System games in your browser.
                     </p>
                 </div>
-                <Resume keywords={new URLSearchParams(this.props.location.search).get("keywords")?.split(",")} length={Number(new URLSearchParams(this.props.location.search).get("length"))}/>
+                <Resume history={this.props.history} keywords={new URLSearchParams(this.props.history.location.search).get("keywords")?.split(",")} length={Number(new URLSearchParams(this.props.history.location.search).get("length"))}/>
             </div>
         )
     }
