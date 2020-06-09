@@ -17,7 +17,7 @@ export default class HomePage extends React.Component<PageProps, {}>{
                 <div className="home-info">
                     <h1>Hello</h1>
                     <p>
-                        {window.location.href.indexOf("dev.garettcooper") !== -1 ? (<b>Welcome to the development version of personal website. </b>) : "Welcome to my personal website. "}
+                        {window.location.href.indexOf("dev.garettcooper") !== -1 ? (<b>Welcome to the staging version of my personal website. </b>) : "Welcome to my personal website. "}
                         My name is Garett Cooper, but you probably figured that out already.
                         This website is essentially an online résumé with a demonstration of basic React competency, as well as a place to host my WebAssembly based <a href="https://github.com/GarettCooper/gc_nes_emulator">gc_nes_emulator</a>
                         {isMobile ? ". Switch to a desktop or laptop" : " which allows you"} to play classic Nintendo Entertainment System games in your browser.
