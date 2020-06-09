@@ -1,6 +1,7 @@
-name: Deploy to Staging
+name: Deploy
 
 on:
+  release: [ released ]
   push:
     branches: [ master ]
 
@@ -22,12 +23,23 @@ jobs:
         cd $GITHUB_WORKSPACE
         npm run build
     
-    - name: Copy to gcloud bucket
+    - name: Copy to staging gcloud bucket
+      if: github.event == 'push'
       uses: actions-hub/gcloud@master
       env:
         PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
         APPLICATION_CREDENTIALS: ${{ secrets.GCP_STORAGE_ADMIN }}
       with:
         args: -m rsync -d -R build gs://dev.garettcooper.com"
+        cli: gsutil
+  
+    - name: Copy to production gcloud bucket
+      if: github.event == 'release'
+      uses: actions-hub/gcloud@master
+      env:
+        PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+        APPLICATION_CREDENTIALS: ${{ secrets.GCP_STORAGE_ADMIN }}
+      with:
+        args: -m rsync -d -R build gs://garettcooper.com"
         cli: gsutil
         
