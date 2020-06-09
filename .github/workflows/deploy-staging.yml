@@ -19,6 +19,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     
+    - name: Install react-app-rewired
+      run: npm install react-app-rewired
+    
     - name: NPM Build
       run: |-
         cd $GITHUB_WORKSPACE
