@@ -63,8 +63,7 @@ export class GitPanel extends React.Component<GitPanelProps, GitPanelState>{
             if (this.props.loadingCallback) this.props.loadingCallback(true);
             let response = await fetch("https://api.github.com/users/GarettCooper/repos");
             this.setState({gitRepos: await response.json()});
-            //this.state.gitRepos.map(repo => console.log("Unique Key: " + repo.id));
-            
+
             if (this.props.loadingCallback) this.props.loadingCallback(false);
 
         } catch (error) {

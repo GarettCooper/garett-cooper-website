@@ -20,6 +20,7 @@ export enum Page {
 }
 
 export interface PageProps {
+  location?: any; // Location; // For some reason this type isn't working so I'll use any for now
   stateUpdateCallback: (state: {loading?: boolean, darkMode?: boolean, page?: Page}) => void;
 }
 
@@ -79,9 +80,7 @@ export default class App extends  React.Component<{}, AppState>{
                 <Route path={Page.OpenSourceProjects}>
                   <GitPage stateUpdateCallback={this.stateUpdate.bind(this)}/>
                 </Route>
-                <Route path={Page.Home}>
-                  <HomePage stateUpdateCallback={this.stateUpdate.bind(this)}/>
-                </Route>
+                <Route path={Page.Home} render={(props) => (<HomePage location={props.location} stateUpdateCallback={this.stateUpdate.bind(this)}/>)}/>
               </Switch>
             </div>
           </LoadingOverlay>
