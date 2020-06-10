@@ -8,6 +8,7 @@ interface ResumeProps {
 
 interface ResumeState {
     resume?: Resume;
+    currentKeywords?: string[]
 }
 
 export default class ResumeComponent extends React.Component<ResumeProps, ResumeState> {
@@ -15,28 +16,34 @@ export default class ResumeComponent extends React.Component<ResumeProps, Resume
     constructor (props: {}) {
         super(props);
         this.state = {
-            resume: undefined
+            resume: undefined,
+            currentKeywords: undefined
         }
     }
 
-    async componentDidMount () {
-        let queryString = "";
-        if (this.props.keywords) {
-            queryString += "keywords=" + this.props.keywords.join(",");
-        }
-        if (this.props.length) {
-            if (this.props.keywords) {
-                queryString += "&";
-            }
-            queryString += "length=" + this.props.length;
-        }
-        let response = await fetch("https://api.garettcooper.com/resume?" + queryString);
-        this.setState({resume: await response.json()});
+    async componentDidUpdate () {
+        if (this.state.currentKeywords !== this.props.keywords) {
+            this.setState({currentKeywords: this.props.keywords})
 
-        if (queryString.length > 0) {
-            this.props.history.push({
-                search: queryString
-            });
+            let queryString = "";
+            console.log(this.props.keywords);
+            if (this.props.keywords && this.props.keywords.length > 0) {
+                queryString += "keywords=" + this.props.keywords.join(",");
+            }
+            if (this.props.length) {
+                if (this.props.keywords) {
+                    queryString += "&";
+                }
+                queryString += "length=" + this.props.length;
+            }
+            let response = await fetch("https://api.garettcooper.com/resume?" + queryString);
+            this.setState({resume: await response.json()});
+
+            if (queryString.length > 0) {
+                this.props.history.push({
+                    search: queryString
+                });
+            }
         }
     }
 
