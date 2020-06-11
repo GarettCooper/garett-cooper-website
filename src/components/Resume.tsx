@@ -8,6 +8,7 @@ interface ResumeProps {
 
 interface ResumeState {
     resume?: Resume;
+    initialized: boolean;
 }
 
 export default class ResumeComponent extends React.Component<ResumeProps, ResumeState> {
@@ -15,13 +16,15 @@ export default class ResumeComponent extends React.Component<ResumeProps, Resume
     constructor (props: {}) {
         super(props);
         this.state = {
-            resume: undefined
+            resume: undefined,
+            initialized: false
         }
     }
 
     async componentDidUpdate (previousProps: ResumeProps, previousState: ResumeState) {
         // Awful hack for comparing arrays, but it works
-        if (previousProps.keywords?.toString() !== this.props.keywords?.toString() || previousProps.length !== this.props.length) {
+        if (previousProps.keywords?.toString() !== this.props.keywords?.toString() || previousProps.length !== this.props.length || !this.state.initialized) {
+            this.setState({initialized: true});
             let queryString = "";
             if (this.props.keywords && this.props.keywords.length > 0) {
                 queryString += "keywords=" + this.props.keywords.join(",");
