@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 import {Page} from './App';
 import gitLogo from '../images/third_party/GitHub-Mark.svg';
 import linkedInLogo from '../images/third_party/LI-In-Bug.png';
-import twitterLogo from '../images/third_party/Twitter_Social_Icon_Rounded_Square_Color.svg';
+// import twitterLogo from '../images/third_party/Twitter_Social_Icon_Rounded_Square_Color.svg';
 import lightSymbol from '../images/material_icons/white-balance-sunny.svg';
 import darkSymbol from '../images/material_icons/weather-night.svg';
 import "../css/Header.css"
@@ -91,7 +91,7 @@ export class HeaderButtons extends React.Component<HeaderButtonProps, {}> {
                 <div className="media-widgets inline">
                     <a href="https://github.com/GarettCooper"><img src={gitLogo} className="media-widget" alt="GitHub Logo"/></a>
                     <a href="https://www.linkedin.com/in/garett-cooper-b7b4a8128/"><img src={linkedInLogo} className="media-widget" alt="LinkedIn Logo" /></a>
-                    <a href="https://twitter.com/GarettWithOneR"><img src={twitterLogo} className="media-widget" alt="Twitter Logo" /></a>
+                    {/*<a href="https://twitter.com/GarettWithOneR"><img src={twitterLogo} className="media-widget" alt="Twitter Logo" /></a>*/}
                 </div>
                 <Switch onChange={this.props.themeChangeCallback} checked={this.props.themeChecked} className="theme-switch" aria-label="Dark Mode Switch" uncheckedIcon={lightIcon} checkedIcon={darkIcon} onColor="#00ab44"/>
             </div>
