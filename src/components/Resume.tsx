@@ -20,8 +20,8 @@ export default class ResumeComponent extends React.Component<ResumeProps, Resume
     }
 
     async componentDidUpdate (previousProps: ResumeProps, previousState: ResumeState) {
-        if (previousProps.keywords !== this.props.keywords || previousProps.length !== this.props.length) {
-
+        // Awful hack for comparing arrays, but it works
+        if (previousProps.keywords?.toString() !== this.props.keywords?.toString() || previousProps.length !== this.props.length) {
             let queryString = "";
             if (this.props.keywords && this.props.keywords.length > 0) {
                 queryString += "keywords=" + this.props.keywords.join(",");
