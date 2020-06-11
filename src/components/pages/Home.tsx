@@ -81,13 +81,13 @@ export default class HomePage extends React.Component<PageProps, HomePageState>{
                                         </div>
                                     </td>
                                     <td>
-                                        <ReactSlider className="horizontal-slider" thumbClassName="slider-thumb" trackClassName="slider-track" defaultValue={(this.state.length / this.state.maxLength) * 100} onChange={this.updateLength.bind(this)}/>
+                                        <ReactSlider className="horizontal-slider" thumbClassName="slider-thumb" trackClassName="slider-track" defaultValue={(this.state.length / this.state.maxLength) * 100} onAfterChange={this.updateLength.bind(this)}/>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                    <Resume history={this.props.history} keywords={this.state.selectedKeywords.split(/[\s,]/).filter(s => s.trim() !== "") ?? []} length={this.state.length}/>
+                    <Resume history={this.props.history} keywords={this.state.selectedKeywords.split(/[\s,]/).filter(s => this.state.keywords.includes(s)) ?? []} length={this.state.length}/>
                 </div>
             </div>
         )
