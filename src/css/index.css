@@ -82,7 +82,8 @@ input {
   font-size: 1em;
   color: var(--primary-text-colour);
   background-color: var(--background-colour);
-  border-color: var(--primary-text-colour);
+  border-color: var(--theme-colour);
+  border-style: groove;
 }
 
 .inline {

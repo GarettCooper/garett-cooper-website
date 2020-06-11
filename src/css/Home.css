@@ -2,6 +2,22 @@
     font-size: 1.1em;
 }
 
+.resume input {
+    width: 90%;
+}
+
+.resume-control-header {
+    color: var(--theme-colour);
+    font-weight: bolder;
+    text-align: left;
+    width: 40%;
+}
+
+.resume-control {
+    width: 60%;
+    display: inline-block;
+}
+
 .react-autocomplete-input {
     background-clip: padding-box;
     background-color: var(--background-colour);
@@ -23,4 +39,33 @@
 .react-autocomplete-input > li.active {
     background-color: var(--theme-colour);
     color: #fff;
+}
+
+.horizontal-slider {
+    max-width: 60%;
+    position: relative;
+}
+
+.slider-thumb {
+    width: 20px;
+    height: 20px;
+    top: -7px;
+    box-shadow: #999999;
+    border-radius: 50%;
+    position: absolute;
+    background: var(--theme-colour);
+}
+
+.slider-track {
+    /*top: 7px;*/
+    height: 6px;
+    border-radius: 5px;
+}
+
+.slider-track-0 {
+    background: var(--theme-colour);
+}
+
+.slider-track-1 {
+    background: var(--secondary-text-colour);
 }

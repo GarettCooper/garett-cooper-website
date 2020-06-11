@@ -4,10 +4,13 @@ import {Page, PageProps} from '../App'
 import {isMobile} from 'react-device-detect'
 import TextInput from 'react-autocomplete-input';
 import '../../css/Home.css'
+import ReactSlider from "react-slider";
 
 interface HomePageState {
     keywords: string[],
-    selectedKeywords: string[]
+    selectedKeywords: string,
+    maxLength: number,
+    length: number
 }
 
 export default class HomePage extends React.Component<PageProps, HomePageState>{
@@ -16,7 +19,9 @@ export default class HomePage extends React.Component<PageProps, HomePageState>{
         super(props);
         this.state = {
             keywords: [],
-            selectedKeywords: []
+            selectedKeywords: new URLSearchParams(this.props.history.location.search).get("keywords")?.split(",")?.join(", ") ?? "",
+            maxLength: 25,
+            length: Number(new URLSearchParams(this.props.history.location.search).get("length") ?? 20)
         }
     }
 
@@ -27,14 +32,17 @@ export default class HomePage extends React.Component<PageProps, HomePageState>{
         this.setState({keywords: keywords});
     }
 
-    private updateSelectedKeywords(input: string) {
-        if (input !== "") {
-            this.setState({selectedKeywords: input.split(" ") ?? []});
+    private updateLength(value: number | number[] | null | undefined) {
+        if (typeof value === "number") {
+            this.setState({length: Math.floor(value * this.state.maxLength / 100)});
         }
     }
 
+    private onChangeKeywords(value: string) {
+        this.setState({selectedKeywords: value});
+    }
+
     render () {
-        let updateSelectedKeywords =  this.updateSelectedKeywords.bind(this);
         return (
             <div className="home-page page">
                 <div className="home-info">
@@ -46,13 +54,41 @@ export default class HomePage extends React.Component<PageProps, HomePageState>{
                         {isMobile ? ". Switch to a desktop or laptop" : " which allows you"} to play classic Nintendo Entertainment System games in your browser.
                     </p>
                 </div>
-                <h1>Résumé</h1>
-                <p>
-                    Right below this point you'll find my résumé. It's retrieved from api.garettcooper.com/resume, an API that I have created to tailor my résumé to meet specific
-                    criteria. Try entering some keywords in the text-box below and see how it changes to reflect the new parameters.
-                </p>
-                <TextInput Component="input" options={this.state.keywords} onBlur={(e: any) => updateSelectedKeywords((e.target as HTMLInputElement).value)} trigger=""/>
-                <Resume history={this.props.history} keywords={this.state.selectedKeywords} length={Number(new URLSearchParams(this.props.history.location.search).get("length"))}/>
+                <div className="resume">
+                    <h1>Résumé</h1>
+                    <p>
+                        Right below this point you'll find my résumé. It's retrieved from api.garettcooper.com/resume, an API that I created to tailor my résumé to meet specific
+                        criteria. Try entering some keywords in the text-box below and see how it changes to fit to the new parameters. The state is also reflected in the URl
+                        for simple saving and sharing.
+                    </p>
+                    <div className="resume-controls">
+                        <table style={{width: "100%"}}>
+                            <thead>
+                                <tr>
+                                    <th className="resume-control-header">
+                                        <div className="resume-control-header">Keywords:</div>
+                                    </th>
+                                    <th className="resume-control-header">
+                                        <div>Length:</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div style={{position: "relative"}}>
+                                            <TextInput Component="input" options={this.state.keywords} onChange={this.onChangeKeywords.bind(this)} value={this.state.selectedKeywords} trigger=""/>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <ReactSlider className="horizontal-slider" thumbClassName="slider-thumb" trackClassName="slider-track" defaultValue={(this.state.length / this.state.maxLength) * 100} onChange={this.updateLength.bind(this)}/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <Resume history={this.props.history} keywords={this.state.selectedKeywords.split(/[\s,]/).filter(s => s.trim() !== "") ?? []} length={this.state.length}/>
+                </div>
             </div>
         )
     }
