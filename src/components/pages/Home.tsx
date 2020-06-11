@@ -34,7 +34,7 @@ export default class HomePage extends React.Component<PageProps, HomePageState>{
 
     private updateLength(value: number | number[] | null | undefined) {
         if (typeof value === "number") {
-            this.setState({length: Math.floor(value * this.state.maxLength / 100)});
+            this.setState({length: Math.min(Math.floor(value * this.state.maxLength / 100), 1)});
         }
     }
 
