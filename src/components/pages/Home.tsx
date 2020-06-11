@@ -28,8 +28,11 @@ export default class HomePage extends React.Component<PageProps, HomePageState>{
     async componentDidMount () {
         document.title = "Garett Cooper";
         this.props.stateUpdateCallback({loading: false, page: Page.Home});
-        let keywords = await (await fetch("https://api.garettcooper.com/resume/keywords")).json();
-        this.setState({keywords: keywords});
+        let [keywords, maxLength] = await Promise.all([
+            fetch("https://api.garettcooper.com/resume/keywords").then((r) => r.json()),
+            fetch("https://api.garettcooper.com/resume/max_length").then((r) => r.json())
+        ]);
+        this.setState({keywords: keywords, maxLength: maxLength});
     }
 
     private updateLength(value: number | number[] | null | undefined) {
