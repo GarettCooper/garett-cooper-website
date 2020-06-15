@@ -27,7 +27,7 @@ export default class ResumeComponent extends React.Component<ResumeProps, Resume
             this.setState({initialized: true});
             let queryString = "";
             if (this.props.keywords && this.props.keywords.length > 0) {
-                queryString += "keywords=" + this.props.keywords.join(",");
+                queryString += "keywords=" + encodeURIComponent(this.props.keywords.join(","));
             }
             if (this.props.length) {
                 if (this.props.keywords && this.props.keywords.length > 0) {
