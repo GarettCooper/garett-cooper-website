@@ -9,7 +9,7 @@ import Menu from './Menu';
 import {
   Switch,
   Route,
-  HashRouter,
+  BrowserRouter,
 } from "react-router-dom";
 import {BrowserView, MobileOnlyView} from "react-device-detect";
 
@@ -88,7 +88,7 @@ export default class App extends  React.Component<{}, AppState>{
     );
 
     return (
-    <HashRouter>
+    <BrowserRouter>
       <div className="app">
         <BrowserView>{pageContent}</BrowserView>
         <MobileOnlyView>
@@ -97,7 +97,7 @@ export default class App extends  React.Component<{}, AppState>{
           </Menu>
         </MobileOnlyView>
       </div>
-    </HashRouter>
+    </BrowserRouter>
     )  
   }
 }
