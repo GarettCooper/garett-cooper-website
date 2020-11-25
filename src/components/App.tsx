@@ -78,8 +78,6 @@ export default class App extends  React.Component<{}, AppState>{
         console.log(error);
       }
 
-    } else {
-      console.log("No Ref string");
     }
   }
 

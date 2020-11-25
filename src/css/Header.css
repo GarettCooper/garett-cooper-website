@@ -6,7 +6,7 @@ Header {
     padding-block-start: 0.3em;
     padding-block-end: 0.3em;
     background-color: var(--background-colour);
-    padding-bottom: 0;
+    padding-bottom: 0.3em;
 }
 
 .header-name {
@@ -16,9 +16,8 @@ Header {
 }
 
 .header-tabs {
-    vertical-align: center;
     color: var(--theme-colour);
-    padding-bottom: 0.2em;
+    padding-bottom: 0.4em;
     padding-top: 0.5em;
 }
 
@@ -32,7 +31,6 @@ Header {
     width: 20em;
     padding-bottom: inherit;
     padding-top: inherit;
-    vertical-align: center;
     border-bottom-width: 0.2em;
     border-bottom-color: var(--theme-colour);
     border-bottom-style: solid;
