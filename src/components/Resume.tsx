@@ -25,22 +25,25 @@ export default class ResumeComponent extends React.Component<ResumeProps, Resume
         // Awful hack for comparing arrays, but it works
         if (previousProps.keywords?.toString() !== this.props.keywords?.toString() || previousProps.length !== this.props.length || !this.state.initialized) {
             this.setState({initialized: true});
+            let query = new URLSearchParams(this.props.history.location.search);
             let queryString = "";
             if (this.props.keywords && this.props.keywords.length > 0) {
                 queryString += "keywords=" + encodeURIComponent(this.props.keywords.join(","));
+                query.set("keywords", this.props.keywords.join(","));
             }
             if (this.props.length) {
                 if (this.props.keywords && this.props.keywords.length > 0) {
                     queryString += "&";
                 }
                 queryString += "length=" + this.props.length;
+                query.set("length", String(this.props.length));
             }
             let response = await fetch("https://api.garettcooper.com/resume?" + queryString);
             this.setState({resume: await response.json()});
 
             if (queryString.length > 0) {
                 this.props.history.push({
-                    search: queryString
+                    search: String(query)
                 });
             }
         }

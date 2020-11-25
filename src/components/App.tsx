@@ -63,6 +63,26 @@ export default class App extends  React.Component<{}, AppState>{
     this.setState({...this.state, darkMode: !this.state.darkMode});
   }
 
+  async componentDidMount () {
+    let query = window.location.href.split('?').slice(-1)[0];
+    let params = new URLSearchParams(query);
+    let referrer = params.get('ref');
+
+    if (referrer && referrer.trim()) {
+      try {
+        await fetch("https://api.garettcooper.com/referral", {
+          method: "POST",
+          body: JSON.stringify({referrerName: referrer})
+        });
+      } catch (error) {
+        console.log(error);
+      }
+
+    } else {
+      console.log("No Ref string");
+    }
+  }
+
   render() {
     // While not exactly in proper react style, I want the theme to be tied to the state of the App component while also covering the whole document.
     // By putting this in the render function, the theme will be updated with the App component.
