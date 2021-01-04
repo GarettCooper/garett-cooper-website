@@ -109,3 +109,34 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@media print {
+  :root {
+    font-size: 11pt;
+  }
+
+  .dark-mode {
+    --primary-text-colour:  var(--primary-text-colour);
+    --secondary-text-colour: var(--secondary-text-colour);
+    --theme-colour: var(--theme-colour);
+    --background-colour: var(--background-colour);
+  }
+
+  h1 {
+    font-size: 15pt;
+    margin: 0;
+  }
+
+  h3 {
+    font-size: 12pt;
+    margin: 0;
+  }
+
+  ul {
+    margin: 10px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}

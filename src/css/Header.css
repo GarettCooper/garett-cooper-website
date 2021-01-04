@@ -79,3 +79,9 @@ Header {
 .header .media-widgets {
     float: right;
 }
+
+@media print {
+    .headroom-wrapper {
+        display: none;
+    }
+}

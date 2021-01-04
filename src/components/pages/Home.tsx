@@ -61,8 +61,9 @@ export default class HomePage extends React.Component<PageProps, HomePageState>{
                     <h1>Résumé</h1>
                     <p>
                         Right below this point you'll find my résumé. It's retrieved from api.garettcooper.com/resume, an API that I created to tailor my résumé to meet specific
-                        criteria. Try entering some keywords in the text-box below and see how it changes to fit to the new parameters. The state is also reflected in the URl
-                        for simple saving and sharing.
+                        criteria. Try entering some keywords in the text-box below and see how it changes to fit to the new parameters. The state is reflected in the URl for simple
+                        saving and sharing. This page also uses custom printing CSS, meaning that you can easily download a copy of my résumé using your browser's built in print
+                        functionality (Ctrl + P on Windows, CMD + P on macOS).
                     </p>
                     <div className="resume-controls">
                         <table style={{width: "100%"}}>

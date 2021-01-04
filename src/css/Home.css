@@ -12,6 +12,23 @@
     width: 90%;
 }
 
+.resume-contact-info {
+    display: none;
+}
+
+.resume-contact {
+    color: var(--secondary-text-colour);
+}
+
+#resume-header-bar {
+    width: 100%;
+    height: 0.1em;
+    padding-bottom: 0.2em;
+    background: var(--theme-colour);
+    -webkit-print-color-adjust: exact;
+    margin-bottom: 10px;
+}
+
 .resume-control-header {
     color: var(--theme-colour);
     font-weight: bolder;
@@ -74,4 +91,14 @@
 
 .slider-track-1 {
     background: var(--secondary-text-colour);
+}
+
+@media print {
+    .home-info, .resume-controls, .resume > h1, .resume > p {
+        display: none;
+    }
+
+    .resume-contact-info {
+        display: block;
+    }
 }
