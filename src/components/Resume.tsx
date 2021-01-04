@@ -86,7 +86,7 @@ class ResumeSubsectionComponent extends React.Component<ResumeSubsectionProps, {
     render() {
         return (
             <div className="resume-section">
-                <h3 className="inline">{this.props.resumeSubsection.heading}</h3>{this.companionHeading()}
+                <h3 className="inline">{this.heading()}</h3>{this.companionHeading()}
                 <h6>{this.props.resumeSubsection.subheading}</h6>
                 {this.props.resumeSubsection.blurb}
                 <ul>
@@ -94,6 +94,14 @@ class ResumeSubsectionComponent extends React.Component<ResumeSubsectionProps, {
                 </ul>
             </div>
         );
+    }
+
+    private heading() {
+        if (this.props.resumeSubsection.link) {
+            return (<a href={this.props.resumeSubsection.link}>{this.props.resumeSubsection.heading}</a>)
+        } else {
+            return (<span>{this.props.resumeSubsection.heading}</span>)
+        }
     }
 
     private companionHeading() {
@@ -113,6 +121,7 @@ export interface ResumeSubsection {
     companionHeading?: string;
     points: ResumePoint[];
     blurb?: string;
+    link?: string;
 }
 
 export interface ResumeSection {
