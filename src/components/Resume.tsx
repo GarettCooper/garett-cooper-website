@@ -56,7 +56,7 @@ export default class ResumeComponent extends React.Component<ResumeProps, Resume
                     <div id="resume-header-bar"/>
                     <div className="header-name">{this.state.resume?.name}</div>
                     <div className="resume-contact"><a href={"mailto:" + this.state.resume?.email}>{this.state.resume?.email}</a></div>
-                    <div className="resume-contact"><a href={this.state.resume?.website}>{this.state.resume?.website}</a></div>
+                    <div className="resume-contact"><a href={this.state.resume?.website + "?ref=downloadedresume"}>{this.state.resume?.website}</a></div>
                     <div className="resume-contact"><a href={"tel:" + this.state.resume?.phoneNumber}>{this.state.resume?.phoneNumber}</a></div>
                     <br/>
                 </div>
